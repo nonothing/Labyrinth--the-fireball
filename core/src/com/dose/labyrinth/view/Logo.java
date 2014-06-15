@@ -9,12 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dose.labyrinth.MyGame;
-
-import static com.dose.labyrinth.MyGame.HEIGT_DEVICE;
-import static com.dose.labyrinth.MyGame.WIDTH_DEVICE;
-import static com.dose.labyrinth.MyGame.scaleX;
-import static com.dose.labyrinth.MyGame.scaleY;
-
+import static com.dose.labyrinth.MyGame.cfg;
 
 public class Logo implements Screen{
 	
@@ -70,7 +65,7 @@ public class Logo implements Screen{
 		public void run() {
 			if(alpha >= -0.95f){
 				showLine++;
-				if(showLine > WIDTH_DEVICE){
+				if(showLine > cfg.getWidth()){
 						hideRect = true;
 					}
 				alpha = 2;
@@ -83,22 +78,22 @@ public class Logo implements Screen{
 	
 	private void animates() {
 		if (count < 10) {
-			spriteBatch.draw(dose1,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose1,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count < 20) {
-			spriteBatch.draw(dose2,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose2,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count < 30) {
-			spriteBatch.draw(dose3,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose3,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count < 40) {
-			spriteBatch.draw(dose4,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose4,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count < 50) {
-			spriteBatch.draw(dose5,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose5,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count < 60) {
-			spriteBatch.draw(dose6,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+			spriteBatch.draw(dose6,0,0,cfg.getWidth(),cfg.getHeight());
 		}
 		else if (count > 60) {
 			game.changeMenu();
@@ -112,11 +107,11 @@ public class Logo implements Screen{
 		if(!hideRect){
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-	        spriteBatch.draw(dose,0,0,WIDTH_DEVICE,HEIGT_DEVICE);
+	        spriteBatch.draw(dose,0,0,cfg.getWidth(),cfg.getHeight());
 	        Gdx.gl.glDisable(GL20.GL_BLEND);
 	        if(alpha>=1.0){
-	        	spriteBatch.draw(line,0,(int)(300*scaleY),(int)(1280*scaleX), (int)(51 *scaleY));
-	        	spriteBatch.draw(lineClear,showLine,(int)(300*scaleY),(int)(1280*scaleX), (int)(51 *scaleY));
+	        	spriteBatch.draw(line,0,(int)(300*cfg.getScaleY()),(int)(1280*cfg.getScaleX()), (int)(51 *cfg.getScaleY()));
+	        	spriteBatch.draw(lineClear,showLine,(int)(300*cfg.getScaleY()),(int)(1280*cfg.getScaleX()), (int)(51 * cfg.getScaleY()));
 	        }
 		}else{
 			animates();

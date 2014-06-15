@@ -1,9 +1,5 @@
 package com.dose.labyrinth.controller;
 
-
-
-import static com.dose.labyrinth.MyGame.PC;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,7 +8,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.dose.labyrinth.MyGame;
 import com.dose.labyrinth.model.MyWorld;
 import com.dose.labyrinth.view.WorldRenderer;
-
+import static com.dose.labyrinth.MyGame.cfg;
 
 public class WorldController implements InputProcessor {
 
@@ -38,42 +34,6 @@ public class WorldController implements InputProcessor {
         mouseX = 0;
         mouseY = 0;
      }
-
-//    public void startGame() {
-//        if (view.getFrame() == null) {
-//            view.init(world);
-//            this.view.addKeyListener(this);
-//        }
-//        world.getPlayer().setLife(3);
-//        mainTimer.start();
-//        this.view.setFocusable(true);
-//        this.view.setVisible(true);
-//        logic.setPause(false);
-//        if (soundController.getSound()) {
-//            soundController.playBackground();
-//        }
-//
-//        if (world.isVictory()) {
-//            world.newGame();
-//        }
-//        view.addMouseMotionListener(this);
-//        view.addMouseListener(this);
-//    }
-
-
-//    private void pause() {
-//        soundController.stop();
-//        logic.setPause(true);
-//    }
-//
-//    private void hide(){
-//        view.setVisible(false);
-//    }
-    
-//    private void showMenu(){
-//        menuController.startGame();
-//    }
-
 
     TimerTask timerTask = new TimerTask() {
 		
@@ -108,7 +68,7 @@ public class WorldController implements InputProcessor {
 
 	@Override
 	public boolean mouseMoved(int x, int y) {
-		if(PC){
+		if(cfg.isPC()){
 			mouseX = x;
 			mouseY = y;
 		}

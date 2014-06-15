@@ -3,6 +3,7 @@ package com.dose.labyrinth;
 import com.badlogic.gdx.Game;
 import com.dose.labyrinth.controller.MenuController;
 import com.dose.labyrinth.controller.WorldController;
+import com.dose.labyrinth.interfaces.IConfig;
 import com.dose.labyrinth.model.MyWorld;
 import com.dose.labyrinth.view.Logo;
 import com.dose.labyrinth.view.MenuRenderer;
@@ -11,12 +12,7 @@ import com.dose.labyrinth.view.WorldRenderer;
 
 public class MyGame extends   Game  {
 	
-	public static boolean DEBUG = false;
-	public static int WIDTH_DEVICE = 800;
-	public static int HEIGT_DEVICE = 444;
-	public static double scaleX = 1.0;
-	public static double scaleY = 1.0;
-	public static boolean PC;
+	public static IConfig cfg;
 	
 	MenuController menuController;
 	WorldController worldController;
@@ -24,11 +20,10 @@ public class MyGame extends   Game  {
 	
 	@Override
 	public void create() {
-		System.out.println(scaleX);
 		menuController = new MenuController(this, new MenuRenderer());
 		worldController = new WorldController(this, new MyWorld(), new WorldRenderer());
 		
-		if(!DEBUG){
+		if(!cfg.isDebug()){
 			logo = new Logo(this);
 			setScreen(logo);
 		}else{
